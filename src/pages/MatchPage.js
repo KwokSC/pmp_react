@@ -3,11 +3,12 @@ import "./MatchPage.css"
 import api from "../requests/api"
 import Card from "../components/Match/Card"
 import Loading from "../components/Main/Loading"
+import { Outlet } from "react-router-dom"
 
 export default function MatchPage() {
 
     const [loading, setLoading] = useState(true)
-    const [match, setMatch] = useState([])
+    const [matchList, setMatchList] = useState([])
     const [userLocation, setUserLocation] = useState({ latitude: undefined, longitude: undefined })
 
     navigator.geolocation.getCurrentPosition(position => {
@@ -19,7 +20,7 @@ export default function MatchPage() {
         api.get('/match/getMatch')
             .then((response) => {
                 setLoading(false)
-                setMatch(response.data.data)
+                setMatchList(response.data.data)
             })
             .catch((error) => {
                 console.log(error)
@@ -33,9 +34,11 @@ export default function MatchPage() {
     return (<Fragment>
         {loading ? <Loading /> :
             <div className="swiper">
-                <Card match={match} />
+                {matchList.map((match) => (
+                    <Card index={match.profileId} profile={match} />
+                ))}
             </div>}
+        <Outlet context={{ hello: "world" }} />
     </Fragment>
-
     )
 }

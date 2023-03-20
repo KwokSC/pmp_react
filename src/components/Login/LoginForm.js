@@ -7,6 +7,7 @@ export default function LoginForm({ hidden }) {
 
     const [user_account, setAccount] = useState("")
     const [user_password, setPassword] = useState("")
+    const [valid, setValid] = useState(true)
     const navigate = useNavigate()
 
     function handleLogin(event) {
@@ -17,17 +18,20 @@ export default function LoginForm({ hidden }) {
                 userPassword: user_password
             })
             .then(response => {
-                if (response.data.data) {
+                if (response.data.code === 200) {
                     setAuthToken(response.data.data)
                     navigate("/match")
+                } else {
+                    setValid(false)
                 }
             })
-            .catch(console.error());
+            .catch();
     }
 
     return (
         <form className={`login-box ${hidden ? 'hidden' : ''}`} onSubmit={handleLogin}>
             <h1>login</h1>
+            <p hidden = {valid}>Invalid Account or Password.</p>
             <input type="account"
                 placeholder="Account"
                 value={user_account}

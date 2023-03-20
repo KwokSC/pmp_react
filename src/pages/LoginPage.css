@@ -14,6 +14,50 @@
     width: 100%;
   }
   
+  .register-box, .login-box h1{
+    text-align: center;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 5px;
+  }
+
+  .register-box, .login-box p{
+    text-align: center;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    color: #a262ad;
+    text-shadow: 2px 2px #d3b7d8;
+  }
+
+  .register-box, .login-box input{
+    background-color: transparent;
+    width: 70%;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 10px 0;
+    text-indent: 10px;
+    margin: 8px 0;
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+  
+  .register-box, .login-box input::placeholder{
+    color: #fff;
+  }
+  
+  .register-box, .login-box input:focus{
+    color: #a262ad;
+    outline: none;
+    border-bottom: 1px solid #a262ad;
+    transition: 0.5s;
+  }
+  
+  .register-box, .login-box input:focus:placeholder{
+    opacity: 0;
+  }
+
   .form-box{
     position: absolute;
     top: -10%;
@@ -48,51 +92,6 @@
     background-color: #a262ad;
     color: #f6f6f6;
     transition: background-color 0.5s ease-in-out;
-  }
-  
-  .slide{
-    transform: translateX(85%);
-  }
-  
-  .hidden{
-    display: none;
-    transition: 0.5s;
-  }
-  
-  h1{
-    text-align: center;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    color: #fff;
-    letter-spacing: 5px;
-  }
-  
-  input{
-    background-color: transparent;
-    width: 70%;
-    color: #fff;
-    border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 10px 0;
-    text-indent: 10px;
-    margin: 8px 0;
-    font-size: 14px;
-    letter-spacing: 2px;
-  }
-  
-  input::placeholder{
-    color: #fff;
-  }
-  
-  input:focus{
-    color: #a262ad;
-    outline: none;
-    border-bottom: 1px solid #a262ad;
-    transition: 0.5s;
-  }
-  
-  input:focus:placeholder{
-    opacity: 0;
   }
   
   .con-box{
@@ -156,4 +155,13 @@
   .con-box button:hover{
     background-color: #d3b7d8;
     color: #fff;
+  }
+
+  .slide{
+    transform: translateX(85%);
+  }
+  
+  .hidden{
+    display: none;
+    transition: 0.5s;
   }
