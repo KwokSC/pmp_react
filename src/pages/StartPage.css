@@ -1,0 +1,29 @@
+.new-profile-container{
+    background-color: #fff;
+    height: 70vh;
+    aspect-ratio: 2/3;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    transform-style: preserve-3d;
+    position: relative;
+    flex-direction: column;
+    display: flex;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.profile-input-area{
+    margin-left: 40px;
+    margin-right: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-input-area h2{
+    color: #d3b7d8;
+    font-size: 20px
+}
+
+.profile-input-area input{
+    width: 100%;
+}
