@@ -5,7 +5,7 @@ import LoginPage from "./pages/LoginPage"
 import StartPage from "./pages/StartPage"
 import ProfilePage from "./pages/ProfilePage"
 import NotFoundPage from "./pages/NotFoundPage"
-import { Routes, Route, useNavigate, useLocation, Link, useRoutes } from "react-router-dom"
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom"
 import { useEffect } from "react";
 import { isAuthenticated } from "./components/Login/auth";
 
@@ -21,7 +21,7 @@ function App() {
   }, [navigate])
 
   return (<>
-    <MenuBar />
+    {!isAuthenticated &&<MenuBar />}
     <Routes>
       <Route path="/" element={<LoginPage />} />
       <Route path="/match" element={<MatchPage />}>
