@@ -1,14 +1,13 @@
-import { useOutletContext, useParams } from "react-router-dom"
+import { Fragment, useState } from "react";
 
-export default function Card({ profile }) {
+export default function Card(){
 
-    const { id } = useParams()
-    const obj = useOutletContext()
+    const [gallery, setGallery] = useState(null);
+    const [profileName, setProfileName] = useState(null);
 
     return (
-        <div className="card">
+        <Fragment>
 
-        </div>
+        </Fragment>
     )
-
 }

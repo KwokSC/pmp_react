@@ -1,36 +1,35 @@
 import "./App.css"
-import MenuBar from "./components/Main/MenuBar"
 import MatchPage from "./pages/MatchPage"
 import LoginPage from "./pages/LoginPage"
 import StartPage from "./pages/StartPage"
 import ProfilePage from "./pages/ProfilePage"
 import NotFoundPage from "./pages/NotFoundPage"
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { isAuthenticated } from "./components/Login/auth";
 
 function App() {
 
   const navigate = useNavigate()
+  const [isLoggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      console.log(isAuthenticated + "")
-      navigate("/login")
+    setLoggedIn(isAuthenticated)
+    if (isLoggedIn) {
+      navigate("/match")
     }
-  }, [navigate])
+  }, [])
 
-  return (<>
-    {!isAuthenticated &&<MenuBar />}
-    <Routes>
-      <Route path="/" element={<LoginPage />} />
-      <Route path="/match" element={<MatchPage />}>
-        <Route path=":id" element={<ProfilePage />} />
-      </Route>
-      <Route path="/start" element={<StartPage />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
-  </>
+  return (
+
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/match" element={<MatchPage />}>
+          <Route path=":id" element={<ProfilePage />} />
+        </Route>
+        <Route path="/start" element={<StartPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
   )
 }
 

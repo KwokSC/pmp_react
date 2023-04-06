@@ -1,6 +1,10 @@
+.match-container{
+    
+}
+
 .swiper{
     background-color: #fff;
-    height: 70vh;
+    height: 80%;
     aspect-ratio: 2/3;
     border-radius: 10px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
