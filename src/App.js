@@ -7,6 +7,7 @@ import NotFoundPage from "./pages/NotFoundPage"
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom"
 import { useEffect, useState } from "react";
 import { isAuthenticated } from "./components/Login/auth";
+import EditPage from "./pages/EditPage"
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/match" element={<MatchPage />}>
           <Route path=":id" element={<ProfilePage />} />
         </Route>
+        <Route path="/edit" element={<EditPage />} />
         <Route path="/start" element={<StartPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

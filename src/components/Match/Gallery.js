@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Gallery({images}){
+export default function Gallery({images}){
 
     const [currentIndex, setIndex] = useState(0)
 
@@ -16,9 +16,9 @@ function Gallery({images}){
     }
 
     return (
-        <div>
+        <div className="gallery">
             {images.map((image, index)=>{
-                <img key={index} src={image} onClick={handleClick}></img>
+                <img className="img" key={index} src={image} onClick={handleClick}></img>
             })}
         </div>
     )

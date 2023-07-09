@@ -9,9 +9,9 @@ import Card from "../components/Match/Card";
 export default function MatchPage() {
   const [loading, setLoading] = useState(true);
   const [matchList, setMatchList] = useState([
-    { profileId: "dshad8914", profileName: "test" },
-    { profileId: "dad8sad4", profileName: "test2" },
-    { profileId: "da21474", profileName: "test3" },
+    { profileId: "dshad8914", profileName: "test1", profileBreed: "a", profileAge: "2", profileImages:["https://pmp-server-bucket.s3.ap-southeast-2.amazonaws.com/profile/user_3f4c532d-50fd-4f80-b488-ab15206cf512/photos/12abc874-6ebc-4165-b373-714c6dccb6b9.jpg"]},
+    { profileId: "dad8sad4", profileName: "test2", profileBreed: "b", profileAge: "3", profileImages:[""] },
+    { profileId: "da21474", profileName: "test3", profileBreed: "c", profileAge: "4", profileImages:[""] },
   ]);
 
   function fetchMatch() {
@@ -69,7 +69,7 @@ export default function MatchPage() {
                 onCardLeftScreen={() => onCardLeftScreen("fooBar")}
                 preventSwipe={["right", "left"]}
               >
-                <Card></Card>
+                <Card profile={match}></Card>
               </TinderCard>
             ))}
           </div>

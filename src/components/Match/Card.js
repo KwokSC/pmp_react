@@ -1,13 +1,15 @@
 import { Fragment, useState } from "react";
+import Gallery from "./Gallery";
+import Overview from "./Overview"
 
-export default function Card(){
+export default function Card({profile}){
 
-    const [gallery, setGallery] = useState(null);
-    const [profileName, setProfileName] = useState(null);
+    const [isDragged, setIsDragged] = useState();
 
     return (
-        <Fragment>
-
-        </Fragment>
+        <div className="card">
+            <Gallery images={profile.profileImages}/>
+            <Overview name={profile.profileName} breed={profile.profileBreed} age={profile.profileAge}/>
+        </div>
     )
 }
