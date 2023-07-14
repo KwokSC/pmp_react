@@ -1,15 +1,13 @@
 
-import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import { removeAuthToken } from "../Login/auth";
-import "./MenuBar.css"
 
 export default function MenuBar() {
 
     const navigate = useNavigate()
 
     function handleProfile(){
-
+        
     }
 
     function handleSetting(){

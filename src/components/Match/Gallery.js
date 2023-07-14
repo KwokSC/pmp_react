@@ -3,6 +3,7 @@ import { useState } from "react";
 export default function Gallery({images}){
 
     const [currentIndex, setIndex] = useState(0)
+    const currentImage = images[currentIndex]
 
     function handleClick(event){
         const clickedX = event.pageX - event.currentTarget.getBoundingClientRect().left;
@@ -17,9 +18,7 @@ export default function Gallery({images}){
 
     return (
         <div className="gallery">
-            {images.map((image, index)=>{
-                <img className="img" key={index} src={image} onClick={handleClick}></img>
-            })}
+           <img className="img" src={currentImage} alt={""} onClick={handleClick}></img>
         </div>
     )
 }

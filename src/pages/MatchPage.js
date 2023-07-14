@@ -4,17 +4,21 @@ import api from "../requests/api";
 import Loading from "../components/Main/Loading";
 import MenuBar from "../components/Main/MenuBar";
 import TinderCard from "react-tinder-card";
-import Card from "../components/Match/Card";
+import Overview from "../components/Match/Overview";
+import SideBar from "../components/Match/Sidebar";
+import Gallery from "../components/Match/Gallery";
 
 export default function MatchPage() {
   const [loading, setLoading] = useState(true);
   const [matchList, setMatchList] = useState([
-    { profileId: "dshad8914", profileName: "test1", profileBreed: "a", profileAge: "2", profileImages:["https://pmp-server-bucket.s3.ap-southeast-2.amazonaws.com/profile/user_3f4c532d-50fd-4f80-b488-ab15206cf512/photos/12abc874-6ebc-4165-b373-714c6dccb6b9.jpg"]},
-    { profileId: "dad8sad4", profileName: "test2", profileBreed: "b", profileAge: "3", profileImages:[""] },
-    { profileId: "da21474", profileName: "test3", profileBreed: "c", profileAge: "4", profileImages:[""] },
+    { profileId: "dshad8914", profileName: "test1", profileBreed: "a", profileAge: "2", 
+    profileImages:[
+      "https://pmp-server-bucket.s3.ap-southeast-2.amazonaws.com/profile/user_3f4c532d-50fd-4f80-b488-ab15206cf512/photos/12abc874-6ebc-4165-b373-714c6dccb6b9.jpg",""]},
+    { profileId: "dad8sad4", profileName: "test2", profileBreed: "b", profileAge: "3", profileImages:[] },
+    { profileId: "da21474", profileName: "test3", profileBreed: "c", profileAge: "4", profileImages:[] },
   ]);
 
-  function fetchMatch() {
+  function fetchMatch() { 
     api
       .get("/match/getMatch")
       .then((response) => {
@@ -40,19 +44,24 @@ export default function MatchPage() {
   }
 
   function onSwipe(direction) {
-    console.log("" + direction);
+
   }
 
-  const onCardLeftScreen = (myIdentifier) => {
-    console.log(myIdentifier + " left the screen");
+  const onCardLeftScreen = (match) => {
+
   };
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       updateLocation(position.coords);
     });
-    fetchMatch();
-  }, []);
+  },[]);
+
+  useEffect(()=>{
+    if(matchList.length === 0){
+      fetchMatch();
+    }
+  },[matchList.length])
 
   return (
     <Fragment>
@@ -64,15 +73,18 @@ export default function MatchPage() {
           <div className="swiper">
             {matchList.map((match) => (
               <TinderCard
+                className="card"
                 key={match.profileId}
                 onSwipe={onSwipe}
-                onCardLeftScreen={() => onCardLeftScreen("fooBar")}
-                preventSwipe={["right", "left"]}
+                onCardLeftScreen={() => onCardLeftScreen(match)}
+                preventSwipe={["top", "bottom"]}
               >
-                <Card profile={match}></Card>
+                <Gallery images={match.profileImages}/>
+                <Overview name={match.profileName} breed={match.profileBreed} age={match.profileAge}/>
               </TinderCard>
             ))}
           </div>
+          <SideBar/>
         </div>
       )}
     </Fragment>

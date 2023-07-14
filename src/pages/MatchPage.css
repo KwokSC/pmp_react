@@ -1,5 +1,32 @@
-.match-container{
-    
+.menu-bar{
+    display: flex;
+    align-items: center;
+    background-color: #d3b7d8;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transform-style: preserve-3d;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.menu-bar button{
+    background-color: transparent;
+    height: 20px;
+    border: none;
+    margin-inline: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.menu-bar button:hover{
+    text-shadow: 2px 2px 5px #fff;
+    transition: text-shadow 0.5s ease-in-out;
+}
+
+.menu-bar button:active{
+    color:#a262ad
 }
 
 .swiper{
@@ -25,10 +52,83 @@
 .card img{
     width: 100%;
     height: 100%;
+    border-radius: 10px;
     object-fit: cover;
     object-position: 50% 50%;
 }
 
-.card gallery{
-    
+.gallery{
+    width: 100%;
+    height: 100%;
 }
+
+.overview{
+  display: flex;
+  position: absolute;
+  padding: 10px;
+}
+
+.sidebar{
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
+  margin-bottom: 10px;
+}
+
+.sidebar button{
+  width: 50px;
+  aspect-ratio: 1;
+  border: 1px solid;
+  border-radius: 25px;
+  margin-inline: 20px;
+  background-color: transparent;
+}
+
+.sidebar button:hover{
+  width: 80px;
+  border-radius: 40px;
+  transition: width 0.5s ease-in-out;
+}
+
+.sidebar button:active{
+  width: 60px;
+}
+
+.sidebar .like{
+  border-color: rgb(126, 255, 212);
+}
+
+.sidebar .dislike{
+  border-color: rgb(255, 126, 126);
+}
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-bottom: 30px;
+    flex-direction: column;
+  }
+  
+  .loading-spinner {
+    border: 20px solid rgba(0, 0, 0, 0.1);
+    border-top-color: #d3b7d8;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+
+  .loading-container h1{
+    margin-top: 25px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }

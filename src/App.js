@@ -19,7 +19,7 @@ function App() {
     if (isLoggedIn) {
       navigate("/match")
     }
-  }, [])
+  }, [isLoggedIn, navigate])
 
   return (
 
