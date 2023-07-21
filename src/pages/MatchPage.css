@@ -59,8 +59,10 @@
 
 .gallery{
   position: absolute;
+  border-radius: 10px;
   width: 100%;
   height: 100%;
+
 }
 
 .overview{
@@ -92,29 +94,28 @@
 
 .sidebar{
   width: 100%;
+  height: 70px;
   align-items: center;
   justify-content: center;
   display: inline-flex;
-  margin-top: 10px;
 }
 
 .sidebar button{
   width: 50px;
   aspect-ratio: 1;
   border: 1px solid;
-  border-radius: 25px;
-  margin-inline: 20px;
+  border-radius: 30px;
+  margin-inline: 15px;
   background-color: transparent;
 }
 
 .sidebar button:hover{
-  width: 80px;
-  border-radius: 40px;
+  width: 60px;
   transition: width 0.5s ease-in-out;
 }
 
 .sidebar button:active{
-  width: 60px;
+  width: 55px;
 }
 
 .sidebar .like{
@@ -123,6 +124,16 @@
 
 .sidebar .dislike{
   border-color: rgb(255, 126, 126);
+}
+
+.sidebar .like:active{
+  background-color: rgb(126, 255, 212);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.sidebar .dislike:active{
+  background-color: rgb(255, 126, 126);
+  transition: background-color 0.2s ease-in-out;
 }
 
 .loading-container {

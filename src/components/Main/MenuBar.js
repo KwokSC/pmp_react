@@ -14,6 +14,10 @@ export default function MenuBar() {
 
     }
 
+    function handleChat(){
+        
+    }
+
     function handleLogout(){
         removeAuthToken()
         navigate("/")
@@ -21,8 +25,9 @@ export default function MenuBar() {
 
     return (
         <div className="menu-bar">
-            <button className="profile-button">Profile</button>
-            <button className="setting-button">Settings</button>
+            <button className="profile-button" onClick={handleProfile}>Profile</button>
+            <button className="setting-button" onClick={handleSetting}>Settings</button>
+            <button className="chat-button" onClick={handleChat}>Chat</button>
             <button className="logout-button" onClick={handleLogout}>Logout</button>
         </div>
     )
