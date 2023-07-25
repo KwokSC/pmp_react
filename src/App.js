@@ -21,15 +21,13 @@ function App() {
     if (isLoggedIn) {
       navigate("/match")
     }
-  }, [isLoggedIn, navigate])
+  }, [])
 
   return (
-
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/match" element={<MatchPage />}>
-          <Route path=":id" element={<ProfilePage />} />
-        </Route>
+        <Route path="/match" element={<MatchPage />} />
+        <Route path="/profile/:id" element={<ProfilePage />} />
         <Route path="/edit" element={<EditPage />} />
         <Route path="/start" element={<StartPage />} />
         <Route path="/setting" element={<SettingPage />} />

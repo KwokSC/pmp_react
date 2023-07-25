@@ -49,7 +49,7 @@ export default function MatchPage() {
   }
 
   function onSwipe(direction) {
-    console.log(direction)
+
   }
 
   const onCardLeftScreen = (match) => {

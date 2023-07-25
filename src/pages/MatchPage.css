@@ -9,7 +9,9 @@
     margin-bottom: 20px;
 }
 
-.menu-bar button{
+.menu-bar .button{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
     background-color: transparent;
     height: 20px;
     border: none;
@@ -20,12 +22,12 @@
     letter-spacing: 2px;
 }
 
-.menu-bar button:hover{
+.menu-bar .button:hover{
     text-shadow: 2px 2px 5px #fff;
     transition: text-shadow 0.5s ease-in-out;
 }
 
-.menu-bar button:active{
+.menu-bar .button:active{
     color:#a262ad
 }
 
