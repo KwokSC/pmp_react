@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 import axios from 'axios';
 import { setAuthToken } from "./auth"
 
@@ -19,7 +19,7 @@ export default function LoginForm({ hidden }) {
             })
             .then(response => {
                 if (response.data.code === 200) {
-                    setAuthToken(response.data.data)
+                    setAuthToken(response.data.data.token + "")
                     navigate("/match")
                 } else {
                     setValid(false)

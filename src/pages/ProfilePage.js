@@ -3,8 +3,11 @@ import { useParams } from "react-router-dom";
 
 export default function ProfilePage() {
 
-    const { id } = useParams()
+    const { userId } = useParams()
 
     useEffect(()=>{},[])
 
+    return(
+        <h1>This is {userId}'s profile.</h1>
+    )
 }

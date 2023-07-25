@@ -2,21 +2,27 @@
 import { Link } from "react-router-dom";
 import { removeAuthToken } from "../Login/auth";
 import { useState } from "react";
-
+import api from "../../requests/api";
+import { useEffect } from "react";
 export default function MenuBar() {
 
     const[userId, setUserId] = useState("");
+    const generateProfileLink = (userId) => `/profile/${userId}`
+    const generateChatLink = (userId) => `/chat/${userId}`
 
-    function handleProfile(){
-        
-    }
+    useEffect(()=>{
+        api
+        .get("/profile/getSelfProfile")
+        .then((response)=>{
+            setUserId(response.data.data.userId)
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    },[])
 
     function handleSetting(){
 
-    }
-
-    function handleChat(){
-        
     }
 
     function handleLogout(){
@@ -25,9 +31,9 @@ export default function MenuBar() {
 
     return (
         <div className="menu-bar">
-            <Link to={"/profile/"+userId} className="button" onClick={handleProfile}>Profile</Link>
+            <Link to={generateProfileLink(userId)} className="button">Profile</Link>
             <Link to="/setting" className="button" onClick={handleSetting}>Settings</Link>
-            <Link to="/chat" className="button" onClick={handleChat}>Chat</Link>
+            <Link to={generateChatLink(userId)} className="button">Chat</Link>
             <Link to="/" className="button" onClick={handleLogout}>Logout</Link>
         </div>
     )

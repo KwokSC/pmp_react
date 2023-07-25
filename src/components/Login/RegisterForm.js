@@ -21,7 +21,7 @@ export default function RegisterForm({ hidden }) {
         axios.post("http://localhost:8080/user/register", user)
             .then(response => {
                 if (response.data.data) {
-                    setAuthToken(response.data.data)
+                    setAuthToken(response.data.data.token + "")
                     navigate("/start")
                 }
             })

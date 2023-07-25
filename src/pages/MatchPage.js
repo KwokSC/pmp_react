@@ -77,7 +77,7 @@ export default function MatchPage() {
         <Loading />
       ) : (
         <div className="match-container">
-          <MenuBar />
+          <MenuBar/>
           <div className="swiper">
             {matchList.map((match) => (
               <TinderCard
