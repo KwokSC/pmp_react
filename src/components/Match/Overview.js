@@ -1,3 +1,5 @@
+import "./Overview.css"
+
 export default function Overview({name, breed, age}){
     
     return(

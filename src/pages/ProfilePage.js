@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import MenuBar from "../components/Main/MenuBar";
 
 export default function ProfilePage() {
 
@@ -8,6 +9,9 @@ export default function ProfilePage() {
     useEffect(()=>{},[])
 
     return(
-        <h1>This is {userId}'s profile.</h1>
+        <div>
+            <MenuBar/>
+            <h1>This is {userId}'s profile.</h1>
+        </div>
     )
 }

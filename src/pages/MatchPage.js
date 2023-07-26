@@ -76,7 +76,7 @@ export default function MatchPage() {
       {loading ? (
         <Loading />
       ) : (
-        <div className="match-container">
+        <div className="container">
           <MenuBar/>
           <div className="swiper">
             {matchList.map((match) => (

@@ -16,10 +16,10 @@ function App() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthenticated()) {
       navigate("/match")
     }
-  }, [])
+  },[]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
       <Routes>

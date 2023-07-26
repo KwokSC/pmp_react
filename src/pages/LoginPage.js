@@ -13,7 +13,7 @@ export default function LoginPage() {
     }
     
     return (
-        <div className="container">
+        <div className="login-container">
             <div className={`form-box ${hidden ? 'slide' : ''}`}>
             <RegisterForm hidden = {hidden}/>
             <LoginForm hidden = {hidden}/>
