@@ -8,16 +8,16 @@ export default function LoginPage() {
 
     const [hidden, change] = useState(false);
 
-    const handleClick = ()=>{
-      change(current => !current);
+    const handleClick = () => {
+        change(current => !current);
     }
-    
+
     return (
         <div className="login-container">
             <div className={`form-box ${hidden ? 'slide' : ''}`}>
-            <RegisterForm hidden = {hidden}/>
-            <LoginForm hidden = {hidden}/>
-        </div>
+                <RegisterForm hidden={hidden} />
+                <LoginForm hidden={hidden} />
+            </div>
             <div className="con-box left">
                 <h2>Welcome to PMP</h2>
                 <p>Join our pet community</p>

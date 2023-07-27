@@ -1,4 +1,4 @@
-.new-profile-container{
+.new-profile-container {
     background-color: #fff;
     height: 70vh;
     aspect-ratio: 2/3;
@@ -12,19 +12,19 @@
     padding-bottom: 40px;
 }
 
-.profile-input-area{
+.profile-input-area {
     margin-left: 40px;
     margin-right: 40px;
     justify-content: center;
     align-items: center;
 }
 
-.profile-input-area h2{
+.profile-input-area h2 {
     color: #d3b7d8;
     font-size: 20px
 }
 
-.profile-input-area input{
+.profile-input-area input {
     background-color: transparent;
     width: 100%;
     color: #fff;
@@ -37,13 +37,13 @@
     letter-spacing: 2px;
 }
 
-.profile-input-area input:focus{
+.profile-input-area input:focus {
     color: #a262ad;
     outline: none;
     border-bottom: 1px solid #a262ad;
     transition: 0.5s;
 }
 
-.profile-input-area input:focus:placeholder{
+.profile-input-area input:focus:placeholder {
     opacity: 0;
 }

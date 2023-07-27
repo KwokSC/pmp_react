@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
-import axios from 'axios';
 import { setAuthToken } from "./auth"
+import { useContext } from "react";
+import AuthContext from "../Main/AuthContext"
+import base from "../../requests/base"
 
 export default function LoginForm({ hidden }) {
 
@@ -9,18 +11,20 @@ export default function LoginForm({ hidden }) {
     const [user_password, setPassword] = useState("")
     const [valid, setValid] = useState(true)
     const navigate = useNavigate()
+    const context = useContext(AuthContext)
 
-    function handleLogin(event) {
+    async function handleLogin(event) {
         event.preventDefault()
-        axios.post("http://localhost:8080/user/login",
+        base.post("/user/login",
             {
                 userAccount: user_account,
                 userPassword: user_password
             })
             .then(response => {
                 if (response.data.code === 200) {
-                    setAuthToken(response.data.data.token + "")
-                    navigate("/match")
+                    const authInfo = response.data.data;
+                    setAuthToken(authInfo.token, authInfo.expiration)
+                    context.onLogin(authInfo.userId)
                 } else {
                     setValid(false)
                 }
@@ -31,7 +35,7 @@ export default function LoginForm({ hidden }) {
     return (
         <form className={`login-box ${hidden ? 'hidden' : ''}`} onSubmit={handleLogin}>
             <h1>login</h1>
-            <p hidden = {valid}>Invalid Account or Password.</p>
+            <p hidden={valid}>Invalid Account or Password.</p>
             <input type="account"
                 placeholder="Account"
                 value={user_account}

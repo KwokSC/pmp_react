@@ -1,11 +1,11 @@
-.gallery{
+.gallery {
   position: absolute;
   border-radius: 10px;
   width: 100%;
   height: 100%;
 }
 
-.gallery .img{
+.gallery .img {
   width: 100%;
   height: 100%;
   border-radius: 10px;

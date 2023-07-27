@@ -19,19 +19,19 @@ function App() {
     if (isAuthenticated()) {
       navigate("/match")
     }
-  },[]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/match" element={<MatchPage />} />
-        <Route path="/profile/:userId" element={<ProfilePage />} />
-        <Route path="/edit" element={<EditPage />} />
-        <Route path="/start" element={<StartPage />} />
-        <Route path="/setting" element={<SettingPage />} />
-        <Route path="/chat" element={<ChatPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/match" element={<MatchPage />} />
+      <Route path="/profile/:userId" element={<ProfilePage />} />
+      <Route path="/edit" element={<EditPage />} />
+      <Route path="/start" element={<StartPage />} />
+      <Route path="/setting" element={<SettingPage />} />
+      <Route path="/chat/:userId" element={<ChatPage />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   )
 }
 

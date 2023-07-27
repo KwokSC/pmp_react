@@ -1,43 +1,45 @@
-.sidebar{
-    width: 100%;
-    height: 70px;
-    align-items: center;
-    justify-content: center;
-    display: inline-flex;
-  }
-  
-  .sidebar button{
-    width: 50px;
-    aspect-ratio: 1;
-    border: 1px solid;
-    border-radius: 30px;
-    margin-inline: 15px;
-    background-color: transparent;
-  }
-  
-  .sidebar button:hover{
-    width: 60px;
-    transition: width 0.5s ease-in-out;
-  }
-  
-  .sidebar button:active{
-    width: 55px;
-  }
-  
-  .sidebar .like{
-    border-color: rgb(126, 255, 212);
-  }
-  
-  .sidebar .dislike{
-    border-color: rgb(255, 126, 126);
-  }
-  
-  .sidebar .like:active{
-    background-color: rgb(126, 255, 212);
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .sidebar .dislike:active{
-    background-color: rgb(255, 126, 126);
-    transition: background-color 0.2s ease-in-out;
-  }
+.side-bar {
+  width: 100%;
+  height: 70px;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
+  position: absolute;
+  bottom: 5%;
+}
+
+.side-bar button {
+  width: 50px;
+  aspect-ratio: 1;
+  border: 1px solid;
+  border-radius: 30px;
+  margin-inline: 15px;
+  background-color: transparent;
+}
+
+.side-bar button:hover {
+  width: 60px;
+  transition: width 0.5s ease-in-out;
+}
+
+.side-bar button:active {
+  width: 55px;
+}
+
+.side-bar .like {
+  border-color: rgb(126, 255, 212);
+}
+
+.side-bar .dislike {
+  border-color: rgb(255, 126, 126);
+}
+
+.side-bar .like:active {
+  background-color: rgb(126, 255, 212);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.side-bar .dislike:active {
+  background-color: rgb(255, 126, 126);
+  transition: background-color 0.2s ease-in-out;
+}

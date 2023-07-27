@@ -1,19 +1,22 @@
-*{
-    margin: 0;
-    padding: 0;
-  }
-  
-  body{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(200deg, #f3e7e9, #e3eeff);
-  }
+* {
+  margin: 0;
+  padding: 0;
+}
 
-  .container{
-    background-color: none;
-    aspect-ratio: 2/3;
-    transform-style: preserve-3d;
-    position: relative;
-  }
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(200deg, #f3e7e9, #e3eeff);
+}
+
+.container {
+  background-color: #fff;
+  height: 100%;
+  aspect-ratio: 2/3;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  transform-style: preserve-3d;
+  position: relative;
+}

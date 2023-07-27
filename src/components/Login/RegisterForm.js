@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
 import { setAuthToken } from "./auth"
+import base from "../../requests/base"
 
 export default function RegisterForm({ hidden }) {
 
@@ -18,7 +18,7 @@ export default function RegisterForm({ hidden }) {
             userEmail: user_email,
             userPassword: user_password,
         }
-        axios.post("http://localhost:8080/user/register", user)
+        base.post("/user/register", user)
             .then(response => {
                 if (response.data.data) {
                     setAuthToken(response.data.data.token + "")
@@ -32,20 +32,20 @@ export default function RegisterForm({ hidden }) {
         <form className={`register-box ${hidden ? '' : 'hidden'}`} onSubmit={handleRegister}>
             <h1>register</h1>
             <input placeholder="Account"
-                value={user_account} 
-                onChange={(e)=>setAccount(e.target.value)}/>
+                value={user_account}
+                onChange={(e) => setAccount(e.target.value)} />
             <input type="email"
                 placeholder="Email"
                 value={user_email}
-                onChange={(e)=>setEmail(e.target.value)} />
+                onChange={(e) => setEmail(e.target.value)} />
             <input type="password"
                 placeholder="Password"
-                value={user_password} 
-                onChange={(e)=>setPassword(e.target.value)}/>
+                value={user_password}
+                onChange={(e) => setPassword(e.target.value)} />
             <input type="password"
                 placeholder="Confirm Password"
-                value={confirm_password} 
-                onChange={(e)=>setConfirmPassword(e.target.value)}/>
+                value={confirm_password}
+                onChange={(e) => setConfirmPassword(e.target.value)} />
             <button type="submit">Register</button>
         </form>
     );

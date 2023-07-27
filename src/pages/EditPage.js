@@ -1,3 +1,3 @@
-export default function EditPage(){
-    
+export default function EditPage() {
+
 }

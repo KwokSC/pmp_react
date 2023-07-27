@@ -1,4 +1,4 @@
-.menu-bar{
+.menu-bar {
     display: flex;
     align-items: center;
     background-color: #d3b7d8;
@@ -9,13 +9,12 @@
     margin-bottom: 20px;
 }
 
-.menu-bar .button{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.menu-bar .button {
     text-decoration: none;
     background-color: transparent;
     height: 20px;
     border: none;
-    margin-inline:5px;
+    margin-inline: 5px;
     text-align: center;
     text-transform: uppercase;
     color: #fff;
@@ -24,13 +23,16 @@
     padding: 5px;
 }
 
-.menu-bar .button:hover{
-    text-shadow: 2px 2px 5px #fff;
+.menu-bar .button:hover {
+    text-shadow: 2px 2px 5px #a262ad;
     transition: text-shadow 0.5s ease-in-out;
 }
 
-.menu-bar .button.active{
-    color:#a262ad;
+.menu-bar .button.active {
+    color: #d3b7d8;
+    text-shadow: 1px 1px 1px #a262ad;
     background-color: #fff;
     transition: background-color 0.5s ease-in-out;
+    transition: color 0.2s ease-in-out;
+    transition: text-shadow 0.2s ease-in-out;
 }

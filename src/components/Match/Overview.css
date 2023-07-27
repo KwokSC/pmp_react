@@ -1,26 +1,26 @@
-.overview{
-    width: 100%;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    bottom: 0px;
-    border-radius: 10px;
-    background: linear-gradient(to bottom, transparent, black);
-    padding-bottom: 40px;
-  }
-  
-  .overview h2{
-    margin-inline: 20px;
-    color: #fff;
-    text-shadow: 1px 1px 2px #d3b7d8;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .overview p{
-    margin-inline: 20px;
-    color: #fff;
-    text-shadow: 1px 1px 2px #d3b7d8;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+.overview {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  bottom: 0px;
+  border-radius: 10px;
+  background: linear-gradient(to bottom, transparent, black);
+  padding-bottom: 30%;
+}
+
+.overview h2 {
+  margin-inline: 20px;
+  color: #fff;
+  text-shadow: 1px 1px 2px #d3b7d8;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.overview p {
+  margin-inline: 20px;
+  color: #fff;
+  text-shadow: 1px 1px 2px #d3b7d8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
