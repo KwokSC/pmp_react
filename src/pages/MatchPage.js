@@ -82,7 +82,7 @@ export default function MatchPage() {
       ) : (
         <div>
           <MenuBar />
-          <div className="container">
+          <div className="swiper">
             <SideBar />
             {matchList.map((match) => (
               <TinderCard

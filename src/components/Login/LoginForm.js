@@ -4,6 +4,7 @@ import { setAuthToken } from "./auth"
 import { useContext } from "react";
 import AuthContext from "../Main/AuthContext"
 import base from "../../requests/base"
+import api from "../../requests/api"
 
 export default function LoginForm({ hidden }) {
 
@@ -15,21 +16,37 @@ export default function LoginForm({ hidden }) {
 
     async function handleLogin(event) {
         event.preventDefault()
-        base.post("/user/login",
-            {
+
+        try{
+            // Check user login information
+            const loginResponse = await base.post("/user/login",{
                 userAccount: user_account,
                 userPassword: user_password
             })
-            .then(response => {
-                if (response.data.code === 200) {
-                    const authInfo = response.data.data;
-                    setAuthToken(authInfo.token, authInfo.expiration)
-                    context.onLogin(authInfo.userId)
-                } else {
-                    setValid(false)
+
+            if(loginResponse.data.code === 200){
+                // Obtain auth info from the response
+                const authInfo = loginResponse.data.data;
+                // Set auth token in the cookies
+                setAuthToken(authInfo.token, authInfo.expiration)
+                // Set user ID in the context
+                context.onLogin(authInfo.userId)
+
+                // Check if the user is a new user (without profile)
+                // If it is a new user, navigate to "/start", otherwise to "/match"
+                const isNewUserResponse = await api.get("/profile/isNewUser")
+                const isNewUser = isNewUserResponse.data.data
+                if(isNewUser){
+                    navigate("/start")
+                }else{
+                    navigate("/match")
                 }
-            })
-            .catch();
+            } else {
+                setValid(false)
+            }
+        } catch(error){
+            console.error("Error during login:", error)
+        }
     }
 
     return (

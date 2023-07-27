@@ -14,6 +14,7 @@ export default function MenuBar() {
   const [activePage, setActivePage] = useState("match");
   const context = useContext(AuthContext)
 
+  // Dynamically change the url based on the current user information
   useEffect(() => {
     setUserId(context.userId)
     updateActivePage()
@@ -31,12 +32,11 @@ export default function MenuBar() {
     } else if (path.startsWith("/chat")) {
       setActivePage("chat");
     } else {
-      setActivePage("discover"); // Default to "discover" for other paths
+      setActivePage("match"); // Default to "match" for other paths
     }
   }
 
   function handleSetting() {
-
   }
 
   return (

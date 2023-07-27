@@ -15,11 +15,13 @@
   border-radius: 30px;
   margin-inline: 15px;
   background-color: transparent;
+  font-size: 20px;
 }
 
 .side-bar button:hover {
+  font-size: 25px;
   width: 60px;
-  transition: width 0.5s ease-in-out;
+  transition: width 0.5s ease-in-out, font-size 0.5s ease-in-out;
 }
 
 .side-bar button:active {
@@ -27,10 +29,12 @@
 }
 
 .side-bar .like {
+  color: rgb(126, 255, 212);
   border-color: rgb(126, 255, 212);
 }
 
 .side-bar .dislike {
+  color: rgb(255, 126, 126);
   border-color: rgb(255, 126, 126);
 }
 

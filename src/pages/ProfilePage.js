@@ -1,4 +1,3 @@
-
 import MenuBar from "../components/Main/MenuBar";
 
 

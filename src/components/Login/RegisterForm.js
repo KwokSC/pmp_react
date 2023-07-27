@@ -13,6 +13,8 @@ export default function RegisterForm({ hidden }) {
 
     function handleRegister(event) {
         event.preventDefault()
+
+        // Submit new user information
         const user = {
             userAccount: user_account,
             userEmail: user_email,
@@ -20,6 +22,8 @@ export default function RegisterForm({ hidden }) {
         }
         base.post("/user/register", user)
             .then(response => {
+
+                // If user creation succeed, navigate to "/start" to complete profile information form
                 if (response.data.data) {
                     setAuthToken(response.data.data.token + "")
                     navigate("/start")

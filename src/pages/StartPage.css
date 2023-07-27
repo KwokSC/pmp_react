@@ -1,27 +1,35 @@
-.new-profile-container {
-    background-color: #fff;
-    height: 70vh;
-    aspect-ratio: 2/3;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
-    transform-style: preserve-3d;
-    position: relative;
-    flex-direction: column;
+.welcome-bar {
     display: flex;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    flex-direction: column;
+    align-items: center;
+    background-color: #d3b7d8;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding-block: 5px;
+    padding: 10px;
+}
+
+.welcome-bar h1{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #fff;
+}
+
+.welcome-bar p{
+    margin-inline: 20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:#fff;
+    letter-spacing: 1px;
+    word-spacing: 2px;
 }
 
 .profile-input-area {
-    margin-left: 40px;
-    margin-right: 40px;
-    justify-content: center;
-    align-items: center;
+    width: 90%;
 }
 
 .profile-input-area h2 {
+    font-size: 15px;
     color: #d3b7d8;
-    font-size: 20px
 }
 
 .profile-input-area input {
@@ -30,10 +38,9 @@
     color: #fff;
     border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 5px 0;
+    padding: 3px 0;
     text-indent: 0px;
-    margin: 8px 0;
-    font-size: 14px;
+    margin: 3px 0;
     letter-spacing: 2px;
 }
 
@@ -47,3 +54,22 @@
 .profile-input-area input:focus:placeholder {
     opacity: 0;
 }
+
+.submit-button {
+    position: absolute;
+    width: 50%;
+    margin-top: 3%;
+    background-color: #fff;
+    color: #a262ad;
+    border: 1px solid #d3b7d8;
+    padding: 6px 10px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    outline: none;
+    bottom: 5%;
+}
+
+.submit-button:hover {
+    background-color: #d3b7d8;
+    color: #fff;
+  }

@@ -10,6 +10,7 @@ import { Routes, Route, useNavigate } from "react-router-dom"
 import { useEffect } from "react";
 import { isAuthenticated } from "./components/Login/auth";
 import EditPage from "./pages/EditPage"
+import api from "./requests/api"
 
 function App() {
 
@@ -17,7 +18,16 @@ function App() {
 
   useEffect(() => {
     if (isAuthenticated()) {
-      navigate("/match")
+      api.get("/profile/isNewUser")
+      .then((response)=>{
+        const isNewUser = response.data.data
+        if(isNewUser){
+          navigate("/")
+      }else{
+          navigate("/match")
+      }
+      })
+      .catch(console.error())
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
