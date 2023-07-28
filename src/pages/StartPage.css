@@ -1,4 +1,5 @@
 .welcome-bar {
+    width: min(80vw, 400px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,7 +8,6 @@
     border-radius: 10px;
     margin-bottom: 20px;
     padding-block: 5px;
-    padding: 10px;
 }
 
 .welcome-bar h1{
@@ -24,7 +24,6 @@
 }
 
 .submit-button {
-    position: absolute;
     width: 50%;
     margin-top: 3%;
     background-color: #fff;
@@ -35,6 +34,7 @@
     letter-spacing: 1px;
     outline: none;
     bottom: 5%;
+    margin-bottom: 5%;
 }
 
 .submit-button:hover {

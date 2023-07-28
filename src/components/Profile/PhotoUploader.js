@@ -1,15 +1,16 @@
-import { useState } from "react";
 import "./PhotoUploader.css"
 
-export default function PhotoUploader({uploadedPhotos, setUploadedPhotos}) {
+export default function PhotoUploader({ uploadedPhotos, setUploadedPhotos }) {
 
     const handleFileSelect = (event, slotIndex) => {
         const file = event.target.files[0];
         if (!file) return;
-
         const reader = new FileReader();
         reader.onload = function (event) {
+            // Shallow copy the current uploadedPhotos array
             const newUploadedPhotos = [...uploadedPhotos];
+
+            // Set the new uploaded photo to the first empty slot
             newUploadedPhotos[slotIndex] = event.target.result;
             setUploadedPhotos(newUploadedPhotos);
         };
@@ -18,22 +19,25 @@ export default function PhotoUploader({uploadedPhotos, setUploadedPhotos}) {
 
     return (
         <div className="photo-uploader">
-            <h2>Please add at least 3 photos</h2>
+            <h2>Please add at least one photo</h2>
             <div className="grid">
                 {Array.from({ length: 9 }, (_, index) => (
                     <div key={index} className="upload-slot">
                         {uploadedPhotos[index] ? (
-                            <img src={uploadedPhotos[index]} alt={{ index }} />
+                            <img src={uploadedPhotos[index]} alt={`Photo ${index + 1}`} />
                         ) : (
-                            <>
-                                <label htmlFor={`fileInput${index}`}>&#43;</label>
+                            <button
+                                className="upload-button"
+                                onClick={() => document.getElementById(`file-input-${index}`).click()}>
+                                &#43;
                                 <input
+                                    id={`file-input-${index}`}
                                     type="file"
-                                    id={`fileInput${index}`}
+                                    accept="image/*"
+                                    onChange={(event) => handleFileSelect(event, index)}
                                     style={{ display: 'none' }}
-                                    onChange={(e) => handleFileSelect(e, index)}
                                 />
-                            </>
+                            </button>
                         )}
                     </div>
                 ))}

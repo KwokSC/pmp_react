@@ -11,10 +11,13 @@ export default function StartPage() {
     const [age, setAge] = useState("")
     const [breed, setBreed] = useState("")
 
+    function handleSubmit(event){
+        event.preventDefault()
+    }
 
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <div className="welcome-bar">
                 <h1>Welcome</h1>
                 <p>Let's start with your profile!</p>

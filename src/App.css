@@ -13,13 +13,12 @@ body {
 
 .container {
   background-color: #fff;
+  width: min(80vw, 400px);
   height: 100%;
   aspect-ratio: 2/3;
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
-  transform-style: preserve-3d;
   position: relative;
-  padding: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
