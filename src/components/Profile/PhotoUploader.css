@@ -1,0 +1,28 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Adjust the number of columns as needed */
+    gap: 10px;
+    /* Adjust the gap between items */
+    margin-bottom: 5%;
+}
+
+/* Style the individual photo upload slots */
+.upload-slot {
+    background-color:transparent;
+    border-radius: 10px;
+    border-color: #a262ad;
+    color: #a262ad;
+    width: 50px;
+    aspect-ratio: 1/1;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.upload-slot:hover{
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+}

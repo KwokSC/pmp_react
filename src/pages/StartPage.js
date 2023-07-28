@@ -1,4 +1,5 @@
 import InputArea from "../components/Profile/InputArea"
+import PhotoUploader from "../components/Profile/PhotoUploader"
 import "./StartPage.css"
 
 export default function StartPage() {
@@ -10,6 +11,7 @@ export default function StartPage() {
                 <p>Let's start with your profile!</p>
             </div>
             <div className="container">
+                <PhotoUploader/>
                 <InputArea title="My Name is..." placeholder="Name" />
                 <InputArea title="I am..." placeholder="Age" />
                 <button className="submit-button">Submit</button>

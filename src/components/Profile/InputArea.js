@@ -1,3 +1,5 @@
+import "./InputArea.css"
+
 export default function InputArea({title, placeholder}) {
     return (
         <div className="profile-input-area">

@@ -23,38 +23,6 @@
     word-spacing: 2px;
 }
 
-.profile-input-area {
-    width: 90%;
-}
-
-.profile-input-area h2 {
-    font-size: 15px;
-    color: #d3b7d8;
-}
-
-.profile-input-area input {
-    background-color: transparent;
-    width: 100%;
-    color: #fff;
-    border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 3px 0;
-    text-indent: 0px;
-    margin: 3px 0;
-    letter-spacing: 2px;
-}
-
-.profile-input-area input:focus {
-    color: #a262ad;
-    outline: none;
-    border-bottom: 1px solid #a262ad;
-    transition: 0.5s;
-}
-
-.profile-input-area input:focus:placeholder {
-    opacity: 0;
-}
-
 .submit-button {
     position: absolute;
     width: 50%;
