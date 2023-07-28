@@ -3,6 +3,7 @@
 }
 
 .profile-input-area h2 {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: #d3b7d8;
     border-radius: 5px;
     border: #d3b7d8 solid 1px;
@@ -20,6 +21,7 @@
     padding: 3px 0;
     text-indent: 0px;
     margin: 3px 0;
+    margin: 4% 0;
     letter-spacing: 2px;
 }
 

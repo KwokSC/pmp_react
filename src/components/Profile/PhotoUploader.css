@@ -1,10 +1,27 @@
+.photo-uploader{
+    width: 90%;
+}
+
+.photo-uploader h2 {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: #d3b7d8;
+    border-radius: 5px;
+    border: #d3b7d8 solid 1px;
+    font-size: 15px;
+    color: #fff;
+    padding: 2%;
+}
+
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns: 1fr 1fr 1fr;
     /* Adjust the number of columns as needed */
     gap: 10px;
     /* Adjust the gap between items */
-    margin-bottom: 5%;
+    margin: 5% 0;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Style the individual photo upload slots */

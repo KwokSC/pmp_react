@@ -1,51 +1,45 @@
 import { useState } from "react";
 import "./PhotoUploader.css"
 
-export default function PhotoUploader(){
+export default function PhotoUploader({uploadedPhotos, setUploadedPhotos}) {
 
-    const [uploadedPhotos, setUploadedPhotos] = useState([])
+    const handleFileSelect = (event, slotIndex) => {
+        const file = event.target.files[0];
+        if (!file) return;
 
-    const handleFileSelect = (event) => {
-        const files = event.target.files;
-        const newPhotos = [];
-    
-        for (const file of files) {
-          const reader = new FileReader();
-          reader.onload = function (event) {
-            newPhotos.push(event.target.result);
-            if (newPhotos.length === files.length) {
-              setUploadedPhotos([...uploadedPhotos, ...newPhotos]);
-            }
-          };
-          reader.readAsDataURL(file);
-        }
-      };
-    
-      return (
-        <div className="grid">
-          <input
-            type="file"
-            id="fileInput"
-            multiple
-            style={{ display: 'none' }}
-            onChange={handleFileSelect}
-          />
-    
-          {uploadedPhotos.map((imageUrl, index) => (
-            <div
-              key={index}
-              className="upload-slot"
-              style={{ backgroundImage: `url('${imageUrl}')` }}
-            />
-          ))}
-    
-          <div
-            className="upload-slot"
-            onClick={() => document.getElementById('fileInput').click()}
-          >
-            +
-          </div>
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            const newUploadedPhotos = [...uploadedPhotos];
+            newUploadedPhotos[slotIndex] = event.target.result;
+            setUploadedPhotos(newUploadedPhotos);
+        };
+        reader.readAsDataURL(file);
+    };
+
+    return (
+        <div className="photo-uploader">
+            <h2>Please add at least 3 photos</h2>
+            <div className="grid">
+                {Array.from({ length: 9 }, (_, index) => (
+                    <div key={index} className="upload-slot">
+                        {uploadedPhotos[index] ? (
+                            <img src={uploadedPhotos[index]} alt={{ index }} />
+                        ) : (
+                            <>
+                                <label htmlFor={`fileInput${index}`}>&#43;</label>
+                                <input
+                                    type="file"
+                                    id={`fileInput${index}`}
+                                    style={{ display: 'none' }}
+                                    onChange={(e) => handleFileSelect(e, index)}
+                                />
+                            </>
+                        )}
+                    </div>
+                ))}
+            </div>
         </div>
-      );
+
+    );
 
 }
