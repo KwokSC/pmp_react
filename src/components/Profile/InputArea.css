@@ -1,5 +1,4 @@
 .profile-input-area {
-    margin-top: 5%;
     width: 90%;
 }
 
@@ -10,6 +9,7 @@
     border: #d3b7d8 solid 1px;
     font-size: 15px;
     color: #fff;
+    margin: 5% 0 0 0;
     padding: 2%;
 }
 
@@ -21,7 +21,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     padding: 3px 0;
     text-indent: 0px;
-    margin: 4% 0 4% 0;
+    margin: 5% 0 0 0;
     letter-spacing: 2px;
 }
 

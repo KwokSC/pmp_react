@@ -5,17 +5,13 @@ export default function PhotoUploader({ uploadedPhotos, setUploadedPhotos }) {
   function handleFileSelect(event) {
     const file = event.target.files[0];
     if (!file) return;
+    
     const reader = new FileReader();
     reader.onload = function (event) {
       // Shallow copy the current uploadedPhotos array
       const newUploadedPhotos = [...uploadedPhotos]
-      const emptySlotIndex = newUploadedPhotos.findIndex((photo) => !photo);
-
-      if (emptySlotIndex !== -1) {
-        // Set the new uploaded photo to the first empty slot
-        newUploadedPhotos[emptySlotIndex] = event.target.result;
-        setUploadedPhotos(newUploadedPhotos);
-      }
+      newUploadedPhotos.push(event.target.result)
+      setUploadedPhotos(newUploadedPhotos)
     };
     reader.readAsDataURL(file);
   };
@@ -34,8 +30,8 @@ export default function PhotoUploader({ uploadedPhotos, setUploadedPhotos }) {
           <div key={index} className="upload-slot">
             {uploadedPhotos[index] ? (
               <div className="img-preview">
-                <img src={uploadedPhotos[index]} alt={`Photo ${index + 1}`} />
-                <button className="delete-button" onClick={deletePhoto.bind(null, index)}>&#10006;</button>
+                <img src={uploadedPhotos[index]} alt={index + 1} />
+                <button className="delete-button" onClick={()=>deletePhoto(index)}>&#10006;</button>
               </div>
             ) : (
               <button

@@ -2,7 +2,7 @@ import api from "./api"
 
 export default function getProfileById(id) {
 
-    return api.get("/profile/getProfileById", {
+    api.get("/profile/getProfileById", {
         params: {
             id: id
         }

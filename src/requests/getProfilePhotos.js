@@ -1,10 +1,7 @@
-import api from "./api"
+import api from "./api";
 
 export default function getProfilePhotos() {
-
-    return api.get("/profile/getProfilePhotos")
-        .then((response) => {
-            return response.data.data
-        })
-        .catch()
+  api.get("/profile/getProfilePhotos").then((response) => {
+    return response.data.data;
+  });
 }

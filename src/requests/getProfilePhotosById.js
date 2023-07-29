@@ -2,7 +2,7 @@ import base from "./base"
 
 export default function getProfilePhotosById(id) {
 
-    return base.get("/profile/getProfilePhotosById", {
+    base.get("/profile/getProfilePhotosById", {
         params: {
             id: id
         }
