@@ -23,21 +23,27 @@
     word-spacing: 2px;
 }
 
-.submit-button {
+.page-bar{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-bar button {
     width: 50%;
-    margin-top: 3%;
     background-color: #fff;
     color: #a262ad;
     border: 1px solid #d3b7d8;
-    padding: 6px 10px;
+    padding: 3% 5%;
     border-radius: 5px;
     letter-spacing: 1px;
     outline: none;
     bottom: 5%;
-    margin-bottom: 5%;
+    margin: 3% 1% 5% 1%;
 }
 
-.submit-button:hover {
+.page-bar button:hover {
     background-color: #d3b7d8;
     color: #fff;
   }

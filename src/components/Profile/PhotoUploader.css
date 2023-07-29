@@ -39,17 +39,48 @@
     font-size: 20px;
 }
 
-.upload-slot:hover{
+.upload-button{
+    border-radius: inherit;
+}
+
+.upload-button:hover{
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
-.upload-slot img{
+.img-preview{
+    position: relative;
     border-radius: inherit;
     width: 100%;
     height: 100%;
 }
 
-.upload-slot button{
+.upload-slot img{
+    object-fit: cover;
+    border-radius: inherit;
+    width: 100%;
+    height: 100%;
+}
+
+.delete-button{
+    top: 2%;
+    right: 2%;
+    position: absolute;
+    aspect-ratio: 1/1;
+    border: 1px solid #a262ad;
+    color: #d3b7d8;
+    background-color: #fff;
+    width: 20px;
+    border-radius: 100%;
+}
+
+.delete-button:hover{
+    border: none;
+    color: #a262ad;
+    background-color: #fff;
+    transition: 0.5s ease-in-out;
+}
+
+.upload-button{
     color: #a262ad;
     font-size: 100%;
     border: none;
