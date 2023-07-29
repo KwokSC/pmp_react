@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import InputArea from "../components/Profile/InputArea";
 import PhotoUploader from "../components/Profile/PhotoUploader";
-import getProfilePhotos from "../requests/getProfilePhotos";
 import "./StartPage.css";
+import { Link } from "react-router-dom";
 
 export default function StartPage() {
   const [currentPage, setCurrentPage] = useState(0);
-  const [uploadedPhotos, setUploadedPhotos] = useState(Array(9).fill(null));
+  const [uploadedPhotos, setUploadedPhotos] = useState([]);
   const [name, setName] = useState("");
   const [birth, setBirth] = useState("");
   const [breed, setBreed] = useState("");
@@ -47,12 +47,12 @@ export default function StartPage() {
   }
 
   function handleSubmit(event) {
-    event.preventDefault();
+    event.preventDefault()
   }
 
-  useEffect(() => {
-    setUploadedPhotos(getProfilePhotos);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  function uploadPhotos(){
+    
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -62,7 +62,6 @@ export default function StartPage() {
       </div>
       <div className="container">
         {pages[currentPage].content}
-
         <div className="page-bar">
           {currentPage > 0 && (
             <button onClick={handlePreviousPage}>Previous</button>
@@ -73,6 +72,7 @@ export default function StartPage() {
             <button onClick={() => console.log("Submit Form")}>Submit</button>
           )}
         </div>
+        <Link className="skip" to="/match">Skip personalization</Link>
       </div>
     </form>
   );
