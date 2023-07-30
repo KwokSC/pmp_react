@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import InputArea from "../components/Profile/InputArea";
 import PhotoUploader from "../components/Profile/PhotoUploader";
 import "./StartPage.css";
-import { Link } from "react-router-dom";
+import api from "../requests/api";
 
 export default function StartPage() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -47,12 +48,35 @@ export default function StartPage() {
   }
 
   function handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
+    // try {
+    //   // Call the uploadPhotos function to send the uploadedPhotos list to the backend
+    //   const response = uploadPhotos(uploadedPhotos);
+    //   // Handle the response from the backend, if needed
+    //   console.log("Response from backend:", response);
+    // } catch (error) {
+    //   // Handle errors
+    //   console.error("Error uploading photos:", error);
+    // }
   }
 
-  function uploadPhotos(){
-    
-  }
+  // function uploadPhotos(photos) {
+  //   try {
+  //     const response = api.post("/profile/uploadPhotos", {
+  //       params:{
+  //         photos: photos
+  //       }
+  //     }, {
+  //       headers: {
+  //         "Content-Type": "multipart/form-data",
+  //       },
+  //     });
+
+  //     return response.data.data;
+  //   } catch (error) {
+  //     throw new Error("Error uploading photos:", error);
+  //   }
+  // }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -72,7 +96,9 @@ export default function StartPage() {
             <button onClick={() => console.log("Submit Form")}>Submit</button>
           )}
         </div>
-        <Link className="skip" to="/match">Skip personalization</Link>
+        <Link className="skip" to="/match">
+          Skip personalization
+        </Link>
       </div>
     </form>
   );
