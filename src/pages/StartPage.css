@@ -23,11 +23,20 @@
     word-spacing: 2px;
 }
 
-.page-bar {
+.bottom-bar {
     width: 80%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.page-bar{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .page-bar button {
@@ -39,7 +48,6 @@
     border-radius: 5px;
     letter-spacing: 1px;
     outline: none;
-    bottom: 5%;
     margin: 5% 2% 5% 2%;
 }
 

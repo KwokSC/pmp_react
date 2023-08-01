@@ -1,4 +1,4 @@
-import "./InputArea.css";
+import "./ProfileFormComponents.css";
 
 export default function InputArea({ title, placeholder, param, setParam }) {
   return (
