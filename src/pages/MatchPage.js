@@ -44,9 +44,6 @@ export default function MatchPage() {
   function updateLocation(location) {
     api
       .post("/profile/updateLocation", location)
-      .then((response) => {
-        console.log(response);
-      })
       .catch((error) => {
         console.log(error);
       });
