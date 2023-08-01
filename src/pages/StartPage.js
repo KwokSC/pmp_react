@@ -49,34 +49,31 @@ export default function StartPage() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    // try {
-    //   // Call the uploadPhotos function to send the uploadedPhotos list to the backend
-    //   const response = uploadPhotos(uploadedPhotos);
-    //   // Handle the response from the backend, if needed
-    //   console.log("Response from backend:", response);
-    // } catch (error) {
-    //   // Handle errors
-    //   console.error("Error uploading photos:", error);
-    // }
+    uploadPhotos();
   }
 
-  // function uploadPhotos(photos) {
-  //   try {
-  //     const response = api.post("/profile/uploadPhotos", {
-  //       params:{
-  //         photos: photos
-  //       }
-  //     }, {
-  //       headers: {
-  //         "Content-Type": "multipart/form-data",
-  //       },
-  //     });
+  function uploadProfile() {
+    
+  }
 
-  //     return response.data.data;
-  //   } catch (error) {
-  //     throw new Error("Error uploading photos:", error);
-  //   }
-  // }
+  function uploadPhotos(photos) {
+    try {
+      const formData = new FormData();
+      photos.forEach((photo, index) => {
+        formData.append(`photos[${index}]`, photo);
+      });
+
+      const response = api.post("/profile/uploadPhotos", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      return response.data.data;
+    } catch (error) {
+      throw new Error("Error uploading photos:", error);
+    }
+  }
 
   return (
     <form onSubmit={handleSubmit}>
