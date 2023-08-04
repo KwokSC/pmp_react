@@ -42,8 +42,20 @@ export default function MatchPage() {
   }
 
   function updateLocation(location) {
+    
+    const latitude = location.latitude
+    const longitude = location.longitude
+
     api
-      .post("/profile/updateLocation", location)
+      .get("/profile/updateLocation",  {
+        params: {
+            latitude: latitude,
+            longitude: longitude
+        }
+    })
+      .then(
+
+      )
       .catch((error) => {
         console.log(error);
       });

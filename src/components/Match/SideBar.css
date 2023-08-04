@@ -26,10 +26,6 @@
     font-size 0.5s ease-in-out;
 }
 
-.side-bar button:active {
-  width: 55px;
-}
-
 .side-bar .like {
   color: rgb(126, 255, 212);
   border-color: rgb(126, 255, 212);
@@ -41,11 +37,13 @@
 }
 
 .side-bar .like:active {
+  color: #fff;
   background-color: rgb(126, 255, 212);
-  transition: background-color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out background-color 0.2s ease-in-out;
 }
 
 .side-bar .dislike:active {
+  color: #fff;
   background-color: rgb(255, 126, 126);
-  transition: background-color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out background-color 0.2s ease-in-out;
 }

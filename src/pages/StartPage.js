@@ -1,21 +1,23 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import InputArea from "../components/Profile/InputArea";
 import PhotoUploader from "../components/Profile/PhotoUploader";
 import SelectBox from "../components/Profile/SelectBox";
+import DateSelect from "../components/Profile/DateSelect"
+import { GENDER_LIST, SPECIES_LIST } from "../constants/constants";
+
 import "./StartPage.css";
 import api from "../requests/api";
-import { SPECIES_LIST } from "../constants/constants";
 
 export default function StartPage() {
   const [currentPage, setCurrentPage] = useState(0)
   const [uploadedPhotos, setUploadedPhotos] = useState([])
   const [profile_name, setName] = useState("")
   const [profile_breed, setBreed] = useState("")
-  const [profile_species, setSpecies] = useState("")
-  const [profile_gender, setGender] = useState("")
+  const [profile_species, setSpecies] = useState(null)
+  const [profile_gender, setGender] = useState(null)
   const [profile_description, setDescription] = useState("")
-  const [profile_age, setAge] = useState(0)
+  const [profile_age, setAge] = useState("")
   const [profile_birth, setBirth] = useState("")
   const navigate = useNavigate()
 
@@ -52,18 +54,30 @@ export default function StartPage() {
           <SelectBox
             title="I am a"
             options={SPECIES_LIST}
+            context="Select a species"
             selected={profile_species}
             setSelected={setSpecies} />
+          <SelectBox
+            title="I am a"
+            options={GENDER_LIST}
+            context="Select a gender"
+            selected={profile_gender}
+            setSelected={setGender} />
+          <InputArea
+            title="And my breed is..."
+            placeholder="Breed"
+            param={profile_breed}
+            setParam={setBreed} />
         </>
       ),
     },
     {
       title: "Page 3",
-      content: (<></>
-
-      )
+      content: (<DateSelect
+        title="My birthday is..."
+        selected={profile_birth}
+        setSelected={setBirth} />)
     },
-    { title: "Page 4" }
   ];
 
   function handleNextPage(event) {
@@ -78,7 +92,7 @@ export default function StartPage() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    if (currentPage === pages.length-1) {
+    if (currentPage === pages.length - 1) {
       try {
         // Start both upload processes concurrently
         const [photoUploadResult, profileUploadResult] = await Promise.all([
@@ -122,13 +136,13 @@ export default function StartPage() {
       })
   }
 
-  function uploadPhotos(photos) {
-    const formData = new FormData();
-    photos.forEach((photo, index) => {
-      formData.append(`photos[${index}]`, photo);
+  function uploadPhotos(uploadedPhotos) {
+    const photos = new FormData();
+    uploadedPhotos.forEach((photo) => {
+      photos.append("photos", photo);
     });
 
-    api.post("/profile/uploadPhotos", formData, {
+    api.post("/profile/uploadPhotos", photos, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
