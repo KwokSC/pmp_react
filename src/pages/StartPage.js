@@ -5,7 +5,6 @@ import PhotoUploader from "../components/Profile/PhotoUploader";
 import SelectBox from "../components/Profile/SelectBox";
 import DateSelect from "../components/Profile/DateSelect"
 import { GENDER_LIST, SPECIES_LIST } from "../constants/constants";
-
 import "./StartPage.css";
 import api from "../requests/api";
 
@@ -14,8 +13,8 @@ export default function StartPage() {
   const [uploadedPhotos, setUploadedPhotos] = useState([])
   const [profile_name, setName] = useState("")
   const [profile_breed, setBreed] = useState("")
-  const [profile_species, setSpecies] = useState(null)
-  const [profile_gender, setGender] = useState(null)
+  const [profile_species, setSpecies] = useState("")
+  const [profile_gender, setGender] = useState("")
   const [profile_description, setDescription] = useState("")
   const [profile_age, setAge] = useState("")
   const [profile_birth, setBirth] = useState("")

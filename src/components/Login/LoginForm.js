@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { setAuthToken } from "./auth"
 import { useContext } from "react";
 import AuthContext from "../Main/AuthContext"
+import { useGlobalError } from "../Main/GlobalErrorContext";
 import base from "../../requests/base"
 import api from "../../requests/api"
 
@@ -10,9 +11,9 @@ export default function LoginForm({ hidden }) {
 
     const [user_account, setAccount] = useState("")
     const [user_password, setPassword] = useState("")
-    const [valid, setValid] = useState(true)
     const navigate = useNavigate()
     const context = useContext(AuthContext)
+    const { setErrorMsg } = useGlobalError();
 
     async function handleLogin(event) {
         event.preventDefault()
@@ -42,17 +43,16 @@ export default function LoginForm({ hidden }) {
                     navigate("/match")
                 }
             } else {
-                setValid(false)
+                setErrorMsg("Invalid Account or Password.")
             }
         } catch(error){
-            console.error("Error during login:", error)
+            setErrorMsg(error)
         }
     }
 
     return (
         <form className={`login-box ${hidden ? 'hidden' : ''}`} onSubmit={handleLogin}>
             <h1>login</h1>
-            <p hidden={valid}>Invalid Account or Password.</p>
             <input type="account"
                 placeholder="Account"
                 value={user_account}
