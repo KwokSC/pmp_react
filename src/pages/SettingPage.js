@@ -5,7 +5,7 @@ export default function SettingPage() {
         <div>
             <MenuBar />
             <div className="container">
-                This is setting page
+                
             </div>
         </div>
     )
