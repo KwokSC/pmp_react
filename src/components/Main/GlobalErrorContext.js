@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState } from "react";
 
 const GlobalErrorContext = createContext({
-  error: null,
+  errors: [],
   setErrorMsg: undefined,
   clearError: undefined,
 });
@@ -12,20 +12,19 @@ export const useGlobalError = () => {
 };
 
 export const GlobalErrorProvider = ({ children }) => {
-  const [error, setError] = useState(null);
+  const [errors, setErrors] = useState([]);
 
-  const setErrorMsg = (message) => {
-    setError(message);
+  const addErrorMsg = (message) => {
+    setErrors((prevErrors) => [...prevErrors, message]);
   };
 
-  const clearError = () => {
-    setError(null);
+  const clearError = (message) => {
+    setErrors((prevErrors) => prevErrors.filter((error) => error !== message));
   };
 
   return (
     <GlobalErrorContext.Provider
-      value={{ error: error, setErrorMsg: setErrorMsg, clearError: clearError }}
-    >
+      value={{ errors: errors, addErrorMsg: addErrorMsg, clearError: clearError }}>
       {children}
     </GlobalErrorContext.Provider>
   );

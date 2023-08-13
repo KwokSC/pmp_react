@@ -2,17 +2,16 @@ import React from "react";
 import { useGlobalError } from "./GlobalErrorContext";
 
 const ErrorModal = () => {
-  const { error, clearError } = useGlobalError();
-  const modalClassName = `error-content ${error ? 'active' : ''}`;
-
-  if (!error) {
-    return null;
-  }
+  const { errors, clearError } = useGlobalError();
 
   return (
-    <div className={modalClassName}>
-      <p>{error}</p>
-      <button onClick={clearError}>Dismiss</button>
+    <div className="error-area">
+      {errors.map((error, index) => (
+        <div key={index} className="error-content active">
+          <p>{error}</p>
+          <button onClick={() => clearError(error)}>Dismiss</button>
+        </div>
+      ))}
     </div>
   );
 };

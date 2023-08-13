@@ -3,22 +3,24 @@ import { Link, useNavigate } from "react-router-dom";
 import InputArea from "../components/Profile/InputArea";
 import PhotoUploader from "../components/Profile/PhotoUploader";
 import SelectBox from "../components/Profile/SelectBox";
-import DateSelect from "../components/Profile/DateSelect"
+import DateSelect from "../components/Profile/DateSelect";
+import { useGlobalError } from "../components/Main/GlobalErrorContext";
 import { GENDER_LIST, SPECIES_LIST } from "../constants/constants";
 import "./StartPage.css";
 import api from "../requests/api";
 
 export default function StartPage() {
-  const [currentPage, setCurrentPage] = useState(0)
-  const [uploadedPhotos, setUploadedPhotos] = useState([])
-  const [profile_name, setName] = useState("")
-  const [profile_breed, setBreed] = useState("")
-  const [profile_species, setSpecies] = useState("")
-  const [profile_gender, setGender] = useState("")
-  const [profile_description, setDescription] = useState("")
-  const [profile_age, setAge] = useState("")
-  const [profile_birth, setBirth] = useState("")
-  const navigate = useNavigate()
+  const [currentPage, setCurrentPage] = useState(0);
+  const [uploadedPhotos, setUploadedPhotos] = useState([]);
+  const [profile_name, setName] = useState("");
+  const [profile_breed, setBreed] = useState("");
+  const [profile_species, setSpecies] = useState("");
+  const [profile_gender, setGender] = useState("");
+  const [profile_description, setDescription] = useState("");
+  const [profile_age, setAge] = useState("");
+  const [profile_birth, setBirth] = useState("");
+  const { addErrorMsg } = useGlobalError();
+  const navigate = useNavigate();
 
   const pages = [
     {
@@ -44,44 +46,61 @@ export default function StartPage() {
             title="Describe me like..."
             placeholder="Introduction"
             param={profile_description}
-            setParam={setDescription} />
+            setParam={setDescription}
+          />
           <InputArea
             title="Now I am..."
             placeholder="Age"
             param={profile_age}
-            setParam={setAge} />
+            setParam={setAge}
+          />
           <SelectBox
             title="I am a"
             options={SPECIES_LIST}
             context="Select a species"
             selected={profile_species}
-            setSelected={setSpecies} />
+            setSelected={setSpecies}
+          />
           <SelectBox
             title="I am a"
             options={GENDER_LIST}
             context="Select a gender"
             selected={profile_gender}
-            setSelected={setGender} />
+            setSelected={setGender}
+          />
           <InputArea
             title="And my breed is..."
             placeholder="Breed"
             param={profile_breed}
-            setParam={setBreed} />
+            setParam={setBreed}
+          />
         </>
       ),
     },
     {
       title: "Page 3",
-      content: (<DateSelect
-        title="My birthday is..."
-        selected={profile_birth}
-        setSelected={setBirth} />)
+      content: (
+        <DateSelect
+          title="My birthday is..."
+          selected={profile_birth}
+          setSelected={setBirth}
+        />
+      ),
     },
   ];
 
+  function validateForm(){
+
+  }
+
   function handleNextPage(event) {
     event.preventDefault();
-    setCurrentPage((prevPage) => prevPage + 1);
+    if (currentPage === 0 && uploadedPhotos.length === 0) {
+      addErrorMsg("You should upload at least one photo");
+    } 
+    else {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
   }
 
   function handlePreviousPage(event) {
@@ -95,8 +114,8 @@ export default function StartPage() {
       try {
         // Start both upload processes concurrently
         const [photoUploadResult, profileUploadResult] = await Promise.all([
-          uploadPhotos(uploadedPhotos),
-          uploadProfile()
+          uploadPhotos(),
+          uploadProfile(),
         ]);
 
         // Check response codes for both API calls
@@ -122,36 +141,41 @@ export default function StartPage() {
       profileSpecies: profile_species,
       profileGender: profile_gender,
       profileAge: profile_age,
-      profileBirth: profile_birth
-    }
+      profileBirth: profile_birth,
+    };
 
-    api.post("/profile/createProfile", profile)
-      .then(response => {
-        return response.data.code
+    api
+      .post("/profile/createProfile", profile)
+      .then((response) => {
+        return response.data.code;
       })
-      .catch(error => {
-        console.error("Error uploading profile:", error)
-        return null
-      })
+      .catch((error) => {
+        console.error("Error uploading profile:", error);
+        return null;
+      });
   }
 
-  function uploadPhotos(uploadedPhotos) {
-    const photos = new FormData();
+  function uploadPhotos() {
+    const formData = new FormData();
+    let totalContentLength = 0;
+
     uploadedPhotos.forEach((photo) => {
-      photos.append("photos", photo);
+      const blob = new Blob([photo], {type: photo.type})
+      formData.append('photos', blob);
+      totalContentLength += blob.size;
     });
 
-    api.post("/profile/uploadPhotos", photos, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    })
-      .then(response => {
-        return response.data.code
+    api
+      .post("/profile/uploadPhotos", formData,
+      {headers:{
+        'Content-Length' : totalContentLength.toString()
+      }})
+      .then((response) => {
+        return response.data.code;
       })
-      .catch(error => {
-        console.error("Error uploading photos:", error)
-        return null
+      .catch((error) => {
+        console.error("Error uploading photos:", error);
+        return null;
       });
   }
 
@@ -184,6 +208,5 @@ export default function StartPage() {
         </div>
       </form>
     </div>
-
   );
 }

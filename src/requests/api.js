@@ -3,10 +3,7 @@ import Cookies from 'js-cookie';
 import {SERVER_URL} from "../constants/constants"
 
 const api = axios.create({
-    baseURL: SERVER_URL + "/api",
-    headers: {
-        "Content-Type": "application/json"
-    }
+    baseURL: SERVER_URL + "/api"
 })
 
 api.interceptors.request.use(config => {
