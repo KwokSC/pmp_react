@@ -11,16 +11,15 @@ import { useEffect } from "react";
 import { isAuthenticated } from "./components/Login/auth";
 import EditPage from "./pages/EditPage";
 import api from "./requests/api";
-import ErrorModal from "./components/Main/ErrorModal";
-import { AuthProvider } from "./components/Main/AuthContext";
-import { GlobalErrorProvider } from "./components/Main/GlobalErrorContext";
 
 function App() {
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated()) {
+    const isLoggedIn = isAuthenticated()
+
+    if (isLoggedIn) {
       api
         .get("/profile/isNewUser")
         .then((response) => {
@@ -32,25 +31,24 @@ function App() {
           }
         })
         .catch(console.error());
+    } else {
+      navigate("/")
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <GlobalErrorProvider>
-      <AuthProvider>
-        <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/match" element={<MatchPage />} />
-          <Route path="/profile/:userId" element={<ProfilePage />} />
-          <Route path="/edit" element={<EditPage />} />
-          <Route path="/start" element={<StartPage />} />
-          <Route path="/setting" element={<SettingPage />} />
-          <Route path="/chat/:userId" element={<ChatPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-        <ErrorModal />
-      </AuthProvider>
-    </GlobalErrorProvider>
+
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/match" element={<MatchPage />} />
+      <Route path="/profile/:userId" element={<ProfilePage />} />
+      <Route path="/edit" element={<EditPage />} />
+      <Route path="/start" element={<StartPage />} />
+      <Route path="/setting" element={<SettingPage />} />
+      <Route path="/chat/:userId" element={<ChatPage />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+
   );
 }
 

@@ -7,7 +7,7 @@ const ErrorModal = () => {
   return (
     <div className="error-area">
       {errors.map((error, index) => (
-        <div key={index} className="error-content active">
+        <div key={index} className="error-content">
           <p>{error}</p>
           <button onClick={() => clearError(error)}>Dismiss</button>
         </div>

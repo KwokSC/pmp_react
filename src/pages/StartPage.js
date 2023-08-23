@@ -89,15 +89,31 @@ export default function StartPage() {
     },
   ];
 
-  function validateForm(){
+  function validateForm() {
 
+    let isValid = true;
+
+    if (profile_species === "") {
+      addErrorMsg("The species should not be empty.");
+      isValid = false;
+    }
+    if (profile_gender === "") {
+      addErrorMsg("The gender should not be empty.");
+      isValid = false;
+    }
+
+    return isValid
   }
 
   function handleNextPage(event) {
     event.preventDefault();
     if (currentPage === 0 && uploadedPhotos.length === 0) {
-      addErrorMsg("You should upload at least one photo");
-    } 
+      addErrorMsg("You should upload at least one photo.");
+    }
+    else if (currentPage === 1) {
+      if (validateForm())
+        setCurrentPage((prevPage) => prevPage + 1);
+    }
     else {
       setCurrentPage((prevPage) => prevPage + 1);
     }
@@ -160,16 +176,18 @@ export default function StartPage() {
     let totalContentLength = 0;
 
     uploadedPhotos.forEach((photo) => {
-      const blob = new Blob([photo], {type: photo.type})
+      const blob = new Blob([photo], { type: photo.type })
       formData.append('photos', blob);
       totalContentLength += blob.size;
     });
 
     api
       .post("/profile/uploadPhotos", formData,
-      {headers:{
-        'Content-Length' : totalContentLength.toString()
-      }})
+        {
+          headers: {
+            'Content-Length': totalContentLength.toString()
+          }
+        })
       .then((response) => {
         return response.data.code;
       })

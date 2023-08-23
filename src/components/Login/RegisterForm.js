@@ -13,12 +13,28 @@ export default function RegisterForm({ hidden }) {
   const navigate = useNavigate();
 
   function validateRegister() {
-    return (
-      user_account.trim() !== "" &&
-      user_email.match(/^\S+@\S+\.\S+$/) &&
-      user_password.length >= 6 &&
-      user_password === confirm_password
-    );
+
+
+    let isValid = true;
+
+    if (user_account.trim() === "") {
+      addErrorMsg("The account should not be empty.");
+      isValid = false;
+    }
+    if (!user_email.match(/^\S+@\S+\.\S+$/)) {
+      addErrorMsg("The email should follow the format.");
+      isValid = false;
+    }
+    if (user_password.length < 6) {
+      addErrorMsg("The password should be more than 6 digits.");
+      isValid = false;
+    }
+    if (user_password !== confirm_password) {
+      addErrorMsg("The enter the same password again.");
+      isValid = false;
+    }
+
+    return isValid
   }
 
   function handleRegister(event) {
@@ -41,8 +57,6 @@ export default function RegisterForm({ hidden }) {
           }
         })
         .catch(console.error());
-    }else{
-        addErrorMsg()
     }
   }
 

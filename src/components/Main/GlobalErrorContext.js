@@ -1,5 +1,5 @@
 // GlobalErrorContext.js
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const GlobalErrorContext = createContext({
   errors: [],
@@ -15,12 +15,25 @@ export const GlobalErrorProvider = ({ children }) => {
   const [errors, setErrors] = useState([]);
 
   const addErrorMsg = (message) => {
-    setErrors((prevErrors) => [...prevErrors, message]);
+    if (!errors.includes(message)) {
+      setErrors((prevErrors) => [...prevErrors, message]);
+    }
   };
 
   const clearError = (message) => {
     setErrors((prevErrors) => prevErrors.filter((error) => error !== message));
   };
+
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (errors.length > 0) {
+        errors.map((error) => (clearError(error))
+        );
+      }
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [errors]);
 
   return (
     <GlobalErrorContext.Provider

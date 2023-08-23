@@ -24,8 +24,7 @@ body {
   align-items: center;
 }
 
-.error-area{
-  width: 100%;
+.error-area {
   background-color: transparent;
   position: fixed;
   top: 0;
@@ -39,23 +38,39 @@ body {
 }
 
 .error-content {
+  width: 100%;
   background-color: #d3b7d8;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-block: 5px;
-  transition: opacity 0.3s ease-in-out; 
+  margin-bottom: 2px;
+  pointer-events: auto;
+  animation: fade-in-out 3s ease-in-out forwards;
 }
 
-.error-content.active {
-  opacity: 1;
-  pointer-events: auto;
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 .error-content p {
   margin-right: 5px;
-  font-size: 2vh;
+  font-size: 5px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   text-transform: capitalize;
@@ -63,12 +78,12 @@ body {
 }
 
 .error-content button {
-  padding: 5px 3px 5px 3px;
+  padding: 3px 2px 3px 2px;
   margin-left: 5px;
-  font-size: 1.5vh;
+  font-size: 3px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-    letter-spacing: 1px;
+  letter-spacing: 1px;
   border: 1px solid #fff;
   border-radius: 5px;
   background-color: #fff;
